@@ -1,7 +1,6 @@
 import os
 import sys
 import json
-import openai
 import argparse
 
 sys.path.append(r'\AI_CUP\Model')
@@ -22,7 +21,6 @@ if __name__ == "__main__":
 
     args = parser.parse_args()  # 解析參數
 
-    openai.api_key = ''
     answer_dict = {"answers": []}  # 初始化字典
 
     with open(args.question_path, 'rb') as f:
