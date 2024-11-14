@@ -6,9 +6,6 @@ import argparse
 sys.path.append(r'\AI_CUP\Model')
 sys.path.append(r'\AI_CUP\Preprocess')
 
-for path in sys.path:
-    print(path)
-
 import retrieval
 import data_preprocess
 
