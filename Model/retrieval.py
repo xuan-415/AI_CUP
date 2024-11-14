@@ -4,6 +4,7 @@ import openai
 from rank_bm25 import BM25Okapi  # 使用BM25演算法進行文件檢索
 
 def gpt4_retrieve(ans, qs, corpus_dict):
+    """先是利用BM25挑出三個與問題最相關的文檔，再透過openai的gpt-4o-mini來選擇與問題最相關的文檔"""
     while len(ans) < 3:
         ans.append("")
     retries = 10
@@ -38,6 +39,7 @@ def gpt4_retrieve(ans, qs, corpus_dict):
     return res[0] 
 
 def BM25_retrieve(qs, source, corpus_dict):
+    """透過BM25來挑出三個與問題最相關的文檔"""
     filtered_corpus = [corpus_dict[int(file)] for file in source]
     tokenized_corpus = [list(jieba.cut_for_search(doc)) for doc in filtered_corpus]  # 將每篇文檔進行分詞
     bm25 = BM25Okapi(tokenized_corpus)  # 使用BM25演算法建立檢索模型

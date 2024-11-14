@@ -4,8 +4,8 @@ import json
 import openai
 import argparse
 
-sys.path.append(r'C:\Daniel\NCU\113-1\NLP\AICUP\AI_CUP\Model')
-sys.path.append(r'C:\Daniel\NCU\113-1\NLP\AICUP\AI_CUP\Preprocess')
+sys.path.append(r'\AI_CUP\Model')
+sys.path.append(r'\AI_CUP\Preprocess')
 
 for path in sys.path:
     print(path)
@@ -22,11 +22,11 @@ if __name__ == "__main__":
 
     args = parser.parse_args()  # 解析參數
 
-    openai.api_key = ''
     answer_dict = {"answers": []}  # 初始化字典
 
     with open(args.question_path, 'rb') as f:
-        qs_ref = json.load(f)  # 讀取問題檔案
+        """讀取問題檔案"""
+        qs_ref = json.load(f)  
 
     source_path_insurance = os.path.join(args.source_path, 'insurance')  # 設定參考資料路徑
     corpus_dict_insurance = load_data(source_path_insurance)
@@ -58,6 +58,6 @@ if __name__ == "__main__":
         else:
             raise ValueError("Something went wrong")  # 如果過程有問題，拋出錯誤
 
-    # 將答案字典保存為json文件
     with open(args.output_path, 'w', encoding='utf8') as f:
+        """將答案字典保存為json文件"""
         json.dump(answer_dict, f, ensure_ascii=False, indent=4)  # 儲存檔案，確保格式和非ASCII字符
