@@ -3,11 +3,8 @@ import sys
 import json
 import argparse
 
-sys.path.append(r'\AI_CUP\Model')
-sys.path.append(r'\AI_CUP\Preprocess')
-
-import retrieval
-import data_preprocess
+from Model.retrieval import *
+from Preprocess.data_preprocess import *
 
 if __name__ == "__main__":
     # 使用argparse解析命令列參數

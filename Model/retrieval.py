@@ -1,11 +1,16 @@
+import os
 import time
 import jieba
 import openai
+from dotenv import load_dotenv
 from rank_bm25 import BM25Okapi  # 使用BM25演算法進行文件檢索
 
 def gpt4_retrieve(ans, qs, corpus_dict):
     """先是利用BM25挑出三個與問題最相關的文檔，再透過openai的gpt-4o-mini來選擇與問題最相關的文檔"""
-    openai.api_key = ''
+    
+    load_dotenv()
+    API_KEY = os.environ["API_KEY"]
+    openai.api_key = API_KEY
     while len(ans) < 3:
         ans.append("")
     retries = 10

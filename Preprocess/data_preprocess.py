@@ -1,6 +1,6 @@
 import pdfplumber
 import os
-import tqdm
+from tqdm import tqdm
 
 
 def load_data(source_path):
