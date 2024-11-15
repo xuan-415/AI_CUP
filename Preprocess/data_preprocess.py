@@ -1,5 +1,5 @@
-import pdfplumber
 import os
+import pdfplumber
 from tqdm import tqdm
 
 
